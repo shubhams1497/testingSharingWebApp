@@ -1,0 +1,29 @@
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <script>
+            const shareData = {
+                title: 'MDN',
+                text: 'Learn web development on MDN!',
+                url: 'https://developer.mozilla.org',
+            }
+            function share(){
+                const outEl = document.getElementById('output');
+                if(navigator.share){
+                    navigator.share(shareData)
+                    .then((a) => outEl.innerHTML+=a)
+                    .catch(e => outEl.innerHTML+='Error:'+e)
+                }
+                else{
+                    outEl.innerHTML+='sharing not supported!';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button onClick="share()">Share!</button>
+        <p id="output">output: </p>
+        <!-- sdfds
+        <a href="intent://scan/#Intent;scheme=zxing;package=com.google.zxing.client.android;end"> Take a QR code </a> -->
+    </body>
+</html>
